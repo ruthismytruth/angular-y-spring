@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente'; //importamos la clase
+import { tap } from 'rxjs/operators';
 import { ClienteService } from './cliente.service';
 import swal from 'sweetalert2';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,16 +13,30 @@ import swal from 'sweetalert2';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
+  paginador: any;
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.clienteService.getClientes().subscribe(
-      clientes => this.clientes = clientes
-    );
+
+    this.activatedRoute.paramMap.subscribe(params => {
+      let page: number = +params.get('page'); //el operador de suma automaticamente convierte el string en un number
+
+      if (!page) {
+        page = 0;
+      }
+
+      this.clienteService.getClientes(page).pipe(
+        tap(response => {
+          this.clientes = response.content as Cliente[];
+          this.paginador = response;
+        })
+      ).subscribe();
+    })
   }
 
-  delete(cliente : Cliente) : void{
+  delete(cliente: Cliente): void {
     swal({
       title: 'Está seguro?',
       text: `Se va a eliminar a ${cliente.nombre} ${cliente.apellido}`,
@@ -38,7 +54,7 @@ export class ClientesComponent implements OnInit {
       if (result.value) {
         this.clienteService.delete(cliente.id).subscribe(
           response => {
-            this.clientes = this.clientes.filter(cli => cli !== cliente )
+            this.clientes = this.clientes.filter(cli => cli !== cliente)
             swal(
               'Cliente Eliminado!',
               `Cliente ${cliente.nombre} eliminado con exito`,

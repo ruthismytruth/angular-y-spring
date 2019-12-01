@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { formatDate, DatePipe } from '@angular/common';
+
 import { CLIENTES } from './cliente.json';
 import { Cliente } from './cliente'; //importamos la clase
 import { of, Observable, throwError } from 'rxjs';
@@ -18,12 +20,21 @@ export class ClienteService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
   constructor(private http: HttpClient, private router : Router) { }
 
-  getClientes(): Observable<Cliente[]>{
+  getClientes(page : number): Observable<any>{
     //return of(CLIENTES);
-    return this.http.get<Cliente[]>(this.urlEndPoint); //devuelve JSON (tipo any) y le hacemos un cast a Cliente[]
-    //return this.http.get(this.urlEndePoint).pipe(
-      //map( (response) => response as Cliente[] )
-    //);
+    //return this.http.get<Cliente[]>(this.urlEndPoint); //devuelve JSON (tipo any) y le hacemos un cast a Cliente[]
+    return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
+      map( (response : any) => {
+         (response.content as Cliente[]).map(cliente => {
+          cliente.nombre = cliente.nombre.toUpperCase();
+          
+          let datePipe = new DatePipe('es');
+          //cliente.createdAt = datePipe.transform(cliente.createdAt, 'EEEE dd, MMMM yyyy');//formatDate(cliente.createdAt, 'dd-MM-yyyy', 'en-US');
+          return cliente;
+          });
+          return response;
+        })
+    );
   }
 
   create(cliente: Cliente) : Observable<Cliente> {
