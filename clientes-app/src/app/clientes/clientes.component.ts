@@ -14,12 +14,13 @@ export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
   paginador: any;
+  isClientes: boolean;
 
   constructor(private clienteService: ClienteService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.isClientes = true;
     this.activatedRoute.paramMap.subscribe(params => {
       let page: number = +params.get('page'); //el operador de suma automaticamente convierte el string en un number
 

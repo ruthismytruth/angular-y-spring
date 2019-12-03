@@ -16,8 +16,16 @@ export class LibroService {
   
   constructor(private http: HttpClient, private router: Router) { }
 
-  getLibros(): Observable<Libro[]>{
-    return this.http.get<Libro[]>(this.urlEndPoint);
+  getLibros(page: number): Observable<any>{
+    return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
+      map( (response: any) => {
+        (response.content as Libro[]).map( libro => {
+          libro.titulo = libro.titulo.toUpperCase();
+          return libro;
+        })
+        return response;
+      })
+    );
   }
 
   create(libro : Libro) : Observable<Libro>{

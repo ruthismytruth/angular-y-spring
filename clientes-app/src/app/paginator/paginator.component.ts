@@ -6,6 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PaginatorComponent implements OnInit {
   @Input() paginador: any;
+  @Input() isClientes: boolean;
+  @Input() isLibros: boolean;
 
   paginas: number[];
 

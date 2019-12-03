@@ -28,6 +28,7 @@ const routes: Routes = [
   {path: 'clientes', component: ClientesComponent},
   {path: 'clientes/page/:page', component: ClientesComponent},
   {path: 'libros', component:LibrosComponent},
+  {path: 'libros/page/:page', component: LibrosComponent},
   {path: 'clientes/form', component:FormComponent},
   {path: 'clientes/form/:id', component:FormComponent},
   {path: 'libros/form', component:FormComponent2 },
