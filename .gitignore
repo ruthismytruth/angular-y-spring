@@ -8,3 +8,5 @@ clientes-back/.settings/
 *.class
 
 clientes-back/target/classes/
+
+clientes-back/uploads/
