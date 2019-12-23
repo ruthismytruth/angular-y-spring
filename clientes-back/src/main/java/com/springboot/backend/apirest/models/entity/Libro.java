@@ -30,6 +30,8 @@ public class Libro implements Serializable {
 	@Column
 	private String autor;
 	
+	private String foto;
+	
 	public Long getId() {
 		return id;
 	}
@@ -49,6 +51,13 @@ public class Libro implements Serializable {
 		this.autor = autor;
 	}
 	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 	
 
 }

@@ -49,6 +49,8 @@ public class Cliente implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
 	
+	private String foto;
+	
 	//@PrePersist al marcar con Notnull ya no es necesario
 	public void prePersist() {
 		createdAt = new Date();
@@ -92,6 +94,14 @@ public class Cliente implements Serializable {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 }
