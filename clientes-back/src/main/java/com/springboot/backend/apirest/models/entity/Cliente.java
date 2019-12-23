@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -42,11 +43,13 @@ public class Cliente implements Serializable {
 	@Email
 	@Column(nullable = false, unique= true)
 	private String email;
+	
+	@NotNull
 	@Column(name = "created_at")
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
 	
-	@PrePersist
+	//@PrePersist al marcar con Notnull ya no es necesario
 	public void prePersist() {
 		createdAt = new Date();
 	}

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
+import { MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,22 +18,23 @@ import { LibrosComponent } from './libros/libros.component';
 import { FormComponent } from './clientes/form.component';
 import { FormComponent2 } from './libros/form.component';
 import { LibroService } from './libros/libro.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-registerLocaleData(localeES,'es');
+registerLocaleData(localeES, 'es');
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/clientes', pathMatch: 'full'},
-  {path: 'directivas', component: DirectivaComponent},
-  {path: 'clientes', component: ClientesComponent},
-  {path: 'clientes/page/:page', component: ClientesComponent},
-  {path: 'libros', component:LibrosComponent},
-  {path: 'libros/page/:page', component: LibrosComponent},
-  {path: 'clientes/form', component:FormComponent},
-  {path: 'clientes/form/:id', component:FormComponent},
-  {path: 'libros/form', component:FormComponent2 },
-  {path: 'libros/form/:id', component:FormComponent2}
+  { path: '', redirectTo: '/clientes', pathMatch: 'full' },
+  { path: 'directivas', component: DirectivaComponent },
+  { path: 'clientes', component: ClientesComponent },
+  { path: 'clientes/page/:page', component: ClientesComponent },
+  { path: 'libros', component: LibrosComponent },
+  { path: 'libros/page/:page', component: LibrosComponent },
+  { path: 'clientes/form', component: FormComponent },
+  { path: 'clientes/form/:id', component: FormComponent },
+  { path: 'libros/form', component: FormComponent2 },
+  { path: 'libros/form/:id', component: FormComponent2 }
 ]
 
 @NgModule({
@@ -51,9 +53,12 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatDatepickerModule, 
+    MatNativeDateModule
   ],
-  providers: [ClienteService, LibroService, {provide: LOCALE_ID, useValue:'es'}],
+  providers: [ClienteService, LibroService, { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,10 @@
+
+clientes-back/.classpath
+
+clientes-back/.project
+
+clientes-back/.settings/
+
+*.class
+
+clientes-back/target/classes/
