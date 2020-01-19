@@ -32,8 +32,6 @@ public class Libro implements Serializable {
 	
 	private String foto;
 	
-	private String commit1;
-	
 	public Long getId() {
 		return id;
 	}
