@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { formatDate, DatePipe } from '@angular/common';
 
-import { CLIENTES } from './cliente.json';
+//import { CLIENTES } from './cliente.json';
 import { Cliente } from './cliente'; //importamos la clase
 import { of, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -9,6 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 import swal from 'sweetalert2';
 
 import { Router } from '@angular/router';
+import { compileBaseDefFromMetadata } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,23 @@ export class ClienteService {
   delete(id) :Observable<Cliente>{
     return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, {headers : this.httpHeaders}).pipe(
       catchError(e => {
+        console.error(e.error.mensaje);
+        swal('Error al crear', e.error.error, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
+  subirFoto(archivo: File, id): Observable<Cliente>{
+    let formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("id", id);
+    return this.http.post(`${this.urlEndPoint}/upload`, formData).pipe(
+      map((response: any) => response.cliente as Cliente),
+      catchError(e => {
+        if(e.status ==400){
+          return throwError(e);
+        }
         console.error(e.error.mensaje);
         swal('Error al crear', e.error.error, 'error');
         return throwError(e);

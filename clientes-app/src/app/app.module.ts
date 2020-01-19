@@ -19,6 +19,7 @@ import { FormComponent } from './clientes/form.component';
 import { FormComponent2 } from './libros/form.component';
 import { LibroService } from './libros/libro.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DetalleComponent } from './clientes/detalle/detalle.component';
 
 
 registerLocaleData(localeES, 'es');
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'clientes/form', component: FormComponent },
   { path: 'clientes/form/:id', component: FormComponent },
   { path: 'libros/form', component: FormComponent2 },
-  { path: 'libros/form/:id', component: FormComponent2 }
+  { path: 'libros/form/:id', component: FormComponent2 },
+  { path: 'clientes/ver/:id', component: DetalleComponent }
 ]
 
 @NgModule({
@@ -47,7 +49,8 @@ const routes: Routes = [
     LibrosComponent,
     FormComponent,
     FormComponent2,
-    PaginatorComponent
+    PaginatorComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,
