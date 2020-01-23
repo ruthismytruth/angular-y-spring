@@ -1,8 +1,9 @@
-<div class="card">
+<detalle-cliente *ngIf="clienteSeleccionado" [cliente]="clienteSeleccionado"></detalle-cliente>
+<div class="card border primary mb-3">
   <div class="card-header">
     Clientes
   </div>
-  <div class="card-body">
+  <div class="card-body text-primary">
     <h5 class="card-title">Listado de clientes</h5>
     <div class="my-2 text-left">
       <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']">Crear cliente</button>
@@ -15,7 +16,7 @@
     <table class= "table table-bordered table-striped" *ngIf="clientes?.length>0">
       <thead>
         <tr>
-          <th>id</th>
+          <th>foto</th>
           <th>nombre</th>
           <th>apellido</th>
           <th>email</th>
@@ -27,7 +28,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let cliente of clientes">
-          <td><button type="button" [routerLink]="['/clientes/ver', cliente.id]" class="btn btn-success btn-sm">Ver foto</button>{{ cliente.id }}</td>
+          <td><img (click)="abrirModal(cliente)" *ngIf="cliente?.foto" 
+            src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" alt="{{cliente.foto}}" 
+            class="img-thumbnail rounded" style="width: 64px; cursor: pointer;">
+            <img (click)="abrirModal(cliente)" *ngIf="!cliente?.foto" 
+            src="http://localhost:8080/images/no-usuario.png" alt="sin foto" 
+            class="img-thumbnail rounded" style="width: 64px; cursor: pointer;">
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.apellido | uppercase }}</td>
           <td>{{ cliente.email }}</td>

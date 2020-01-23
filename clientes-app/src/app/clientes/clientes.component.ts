@@ -4,6 +4,8 @@ import { tap } from 'rxjs/operators';
 import { ClienteService } from './cliente.service';
 import swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
+import { ModalService } from './detalle/modal.service';
+
 
 
 @Component({
@@ -15,9 +17,11 @@ export class ClientesComponent implements OnInit {
   clientes: Cliente[];
   paginador: any;
   isClientes: boolean;
+  clienteSeleccionado: Cliente;
 
   constructor(private clienteService: ClienteService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private modalService: ModalService) { }
 
   ngOnInit() {
     this.isClientes = true;
@@ -34,6 +38,15 @@ export class ClientesComponent implements OnInit {
           this.paginador = response;
         })
       ).subscribe();
+    })
+
+    this.modalService.notificarUpload.subscribe(cliente => {
+      this.clientes = this.clientes.map(clienteOriginal => {
+        if(cliente.id == clienteOriginal.id){
+          clienteOriginal.foto = cliente.foto;
+        }
+        return clienteOriginal;
+      })
     })
   }
 
@@ -66,5 +79,11 @@ export class ClientesComponent implements OnInit {
       }
     })
   }
+
+  abrirModal(cliente: Cliente){
+    this.clienteSeleccionado = cliente;
+    this.modalService.abrirModal();
+  }
+
 
 }

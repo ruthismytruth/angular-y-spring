@@ -36,7 +36,6 @@ const routes: Routes = [
   { path: 'clientes/form/:id', component: FormComponent },
   { path: 'libros/form', component: FormComponent2 },
   { path: 'libros/form/:id', component: FormComponent2 },
-  { path: 'clientes/ver/:id', component: DetalleComponent }
 ]
 
 @NgModule({
