@@ -1,13 +1,20 @@
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Lauren','Jauregui','lj@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Camila','Cabello','cc@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Taylor','Swift','ts@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Dinah','Jane','dj@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Shawn','Mendes','sm@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Bella','Hadid','bh@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Normani','Kodei','nk@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Selena','Gomez','sg@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Alba','Reche','ar@gmail.com','2019-11-10');
-INSERT INTO CLIENTES (nombre, apellido, email, created_at) VALUES ('Natalia','Lacunza','nl@gmail.com','2019-11-10');
+INSERT INTO REGIONES (id, nombre) VALUES (1,'América');
+INSERT INTO REGIONES (id, nombre) VALUES (2,'Asia');
+INSERT INTO REGIONES (id, nombre) VALUES (3,'Africa');
+INSERT INTO REGIONES (id, nombre) VALUES (4,'Antartida');
+INSERT INTO REGIONES (id, nombre) VALUES (5,'Oceanía');
+INSERT INTO REGIONES (id, nombre) VALUES (6,'Europa');
+
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Lauren','Jauregui','lj@gmail.com','2019-11-10',1);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Camila','Cabello','cc@gmail.com','2019-11-10',2);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Taylor','Swift','ts@gmail.com','2019-11-10',3);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Dinah','Jane','dj@gmail.com','2019-11-10',4);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Shawn','Mendes','sm@gmail.com','2019-11-10',5);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Bella','Hadid','bh@gmail.com','2019-11-10',6);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Normani','Kodei','nk@gmail.com','2019-11-10',3);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Selena','Gomez','sg@gmail.com','2019-11-10',2);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Alba','Reche','ar@gmail.com','2019-11-10',1);
+INSERT INTO CLIENTES (nombre, apellido, email, created_at, region_id) VALUES ('Natalia','Lacunza','nl@gmail.com','2019-11-10',3);
 
 
 INSERT INTO LIBROS (titulo, autor) VALUES ('Diarios','A.Pizarnik');
@@ -22,3 +29,5 @@ INSERT INTO LIBROS (titulo, autor) VALUES ('Diarios 3','A.Pizarnik');
 INSERT INTO LIBROS (titulo, autor) VALUES ('Rayuela 3','J.Cortázar');
 INSERT INTO LIBROS (titulo, autor) VALUES ('Niebla 3','M.A.Unamuno');
 INSERT INTO LIBROS (titulo, autor) VALUES ('La casa de los espíritus 3','I.allende');
+
+

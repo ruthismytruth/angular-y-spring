@@ -7,7 +7,7 @@
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
     <form #clienteForm="ngForm">
-      <div class="form-group row">
+      <div class="form-group row dark-text">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-6">
           <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" #nombre="ngModel">
@@ -52,8 +52,8 @@
       <div class="form-group row">
         <label for="createdAt" class="col-form-label col-sm-2">Fecha</label>
         <div class="col-sm-6">
-          <input [matDatepicker]="myDatepicker" class="form-control" [(ngModel)]="cliente.createdAt" name="createdAt" style="display:inline-block; width:300px;"
-            #createdAt="ngModel">
+          <input [matDatepicker]="myDatepicker" class="form-control" [(ngModel)]="cliente.createdAt" name="createdAt"
+            style="display:inline-block; width:300px;" #createdAt="ngModel">
           <!--required -->
           <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
           <mat-datepicker #myDatepicker></mat-datepicker>
@@ -62,6 +62,17 @@
               createdAt es requerido
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="region" class="col-form-label col-sm-2">Region</label>
+        <div class="col-sm-6">
+          <select [compareWith]="compararRegion" class="form-control" [(ngModel)]="cliente.region" name="region" style=" width:500px;">
+            <option [ngValue]="undefined">---Seleccionar region</option>
+            <option *ngFor="let region of regiones" [ngValue]="region">{{region.nombre}}</option>
+            </select>
+
         </div>
       </div>
 

@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.backend.apirest.models.entity.Cliente;
+import com.springboot.backend.apirest.models.entity.Region;
 import com.springboot.backend.apirest.models.services.IClientesService;
 import com.springboot.backend.apirest.models.services.IUploadFileService;
 
@@ -54,6 +55,8 @@ public class ClienteRestController {
 		return servicio.findAll();
 
 	}
+	
+	
 
 	@GetMapping("/clientes/page/{page}")
 	public Page<Cliente> index(@PathVariable Integer page) {
@@ -134,6 +137,7 @@ public class ClienteRestController {
 			clienteActual.setApellido(cliente.getApellido());
 			clienteActual.setNombre(cliente.getNombre());
 			clienteActual.setEmail(cliente.getEmail());
+			clienteActual.setRegion(cliente.getRegion());
 
 			clienteNuevo = servicio.save(clienteActual);
 
@@ -207,6 +211,11 @@ public class ClienteRestController {
 		HttpHeaders cabecera = new HttpHeaders();
 		cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"");
 		return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
+
+	}
+	@GetMapping("/clientes/regiones")
+	public List<Region> listarRegiones() {
+		return servicio.findAllRegiones();
 
 	}
 }
