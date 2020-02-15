@@ -30,4 +30,13 @@ INSERT INTO LIBROS (titulo, autor) VALUES ('Rayuela 3','J.Cortázar');
 INSERT INTO LIBROS (titulo, autor) VALUES ('Niebla 3','M.A.Unamuno');
 INSERT INTO LIBROS (titulo, autor) VALUES ('La casa de los espíritus 3','I.allende');
 
+INSERT INTO USUARIOS (username, apellido, password, enabled) VALUES ('ruth', 'sanchez','$2a$10$/ZGtglLaNh6rPd96DT4Y5u3u5kJ0369thhaVjhQ4zYfafqK0TkUqS',1);
+INSERT INTO USUARIOS (username, apellido, password, enabled) VALUES ('admin', 'root','$2a$10$RIjm4EtotDaI/bztezQey.Hs7MUeojEEt5/WMs9cGCgzlcStUqiJu',1);
 
+INSERT INTO ROLES (nombre) VALUES ('ROLE_USER'); 
+INSERT INTO ROLES (nombre) VALUES ('ROLE_ADMIN');
+
+
+INSERT INTO USUARIOS_ROLES (usuario_id, rol_id) VALUES (1,1);
+INSERT INTO USUARIOS_ROLES (usuario_id, rol_id) VALUES (2,2);
+INSERT INTO USUARIOS_ROLES (usuario_id, rol_id) VALUES (2,1);

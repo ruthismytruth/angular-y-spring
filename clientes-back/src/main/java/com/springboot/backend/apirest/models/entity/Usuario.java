@@ -32,6 +32,9 @@ public class Usuario implements Serializable {
 	@Column(unique=true, length=20)
 	private String username;
 	
+	@Column(unique=true, length=20)
+	private String apellido;
+	
 	@Column(length=60)
 	private String password;
 	
@@ -91,6 +94,16 @@ public class Usuario implements Serializable {
 
 	public void setRoles(List<Rol> roles) {
 		this.roles = roles;
+	}
+
+
+	public String getApellido() {
+		return apellido;
+	}
+
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	
