@@ -28,7 +28,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	private InfoAdicionalToken infoAdicionalToken;
 	
 	@Autowired 
-	@Qualifier("authenticationManager") //se registra n el contenedor
+	@Qualifier("authenticationManager") //se registra en el contenedor
 	private AuthenticationManager authenticationManager;
 
 	@Override
