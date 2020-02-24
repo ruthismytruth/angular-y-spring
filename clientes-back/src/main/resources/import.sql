@@ -40,3 +40,19 @@ INSERT INTO ROLES (nombre) VALUES ('ROLE_ADMIN');
 INSERT INTO USUARIOS_ROLES (usuario_id, rol_id) VALUES (1,1);
 INSERT INTO USUARIOS_ROLES (usuario_id, rol_id) VALUES (2,2);
 INSERT INTO USUARIOS_ROLES (usuario_id, rol_id) VALUES (2,1);
+
+
+INSERT INTO PRODUCTOS (nombre, precio, created_at) VALUES ("IPHONE", 1000, now());
+INSERT INTO PRODUCTOS (nombre, precio, created_at) VALUES ("ONEPLUS", 700, now());
+INSERT INTO PRODUCTOS (nombre, precio, created_at) VALUES ("REALME", 400, now());
+INSERT INTO PRODUCTOS (nombre, precio, created_at) VALUES ("OPPO", 550, now());
+INSERT INTO PRODUCTOS (nombre, precio, created_at) VALUES ("XIAOMI", 200, now());
+
+
+INSERT INTO FACTURAS (descripcion, observacion, cliente_id, created_at) VALUES ("Facturas ricos", null, 1, now());
+INSERT INTO FACTURAS_ITEMS (cantidad, factura_id, producto_id) VALUES (1,1,1);
+INSERT INTO FACTURAS_ITEMS (cantidad, factura_id, producto_id) VALUES (2,1,2);
+
+INSERT INTO FACTURAS (descripcion, observacion, cliente_id, created_at) VALUES ("Facturas pobres", null, 2, now());
+INSERT INTO FACTURAS_ITEMS (cantidad, factura_id, producto_id) VALUES (3,2,4);
+INSERT INTO FACTURAS_ITEMS (cantidad, factura_id, producto_id) VALUES (4,2,5);
